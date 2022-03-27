@@ -42,12 +42,12 @@ console.log(`This circle\'s area is ${area03} and its circumference is ${circ}.`
 // Question 5
 // Calculate the slope, x-intercept and y-intercept of y = 2x -2
 
-
-
 // Question 6
 // Slope is m = (y2-y1)/(x2-x1). Find the slope between point (2, 2) and point(6,10)
 
-
+var point1 = [2, 2], point2 = [6, 10];
+let y1 = point1[1], y2 = point2[1], x1 = point1[0], x2 = point2[0], m = (y2 - y1)/(x2 - x1);
+console.log(m);
 
 // Question 7
 // Compare the slope of above two questions.
@@ -61,8 +61,23 @@ Enter hours: 40
 Enter rate per hour: 28
 Your weekly earning is 1120 */
 
+var hours = parseFloat(prompt("How many hours do you work each week?", "40")), rate = parseFloat(prompt("How much are you paid per hour?"));
+
+if (hours > 112) {
+    hours = 112;
+}
+
+let week_earn = hours * rate;
+
+console.log(week_earn);
+
 // Question 10
 // If the length of your name is greater than 7 say, your name is long else say your name is short.
+
+let yourName = prompt("What is your name?", "name");
+yourName.length > 7
+    ? console.log("Your name is long!")
+    : console.log("Your name is short!")
 
 // Question 11
 /* Compare your first name length and your family name length and you should get this output.
@@ -70,11 +85,22 @@ Your weekly earning is 1120 */
 let lastName = 'Yetayeh'
 << Your first name, Asabeneh is longer than your family name, Yetayeh */
 
+let firstName = prompt("Enter your first name:"), lastName = prompt("Enter your last name:");
+firstName.length > lastName.length
+    ? console.log(`Your first name, ${firstName}, is longer than your last name, ${lastName}.`)
+    : console.log(`Your first name, ${firstName}, is shorter than your last name, ${lastName}.`)
+
 // Question 12
 /* Declare two variables myAge and yourAge and assign them initial values and myAge and yourAge.
 >> let myAge = 250
 let yourAge = 25
 << I am 225 years older than you. */
+
+let myAge = parseInt(prompt("How old are you, Person 1?")), yourAge = parseInt(prompt("How old are you, Person 2?"));
+
+myAge > yourAge
+    ? console.log(`I am ${myAge - yourAge} years older than you, Person 2! :P`)
+    : console.log(`I am ${yourAge - myAge} years older than you, Person 1! :P`)
 
 // Question 13
 /* Using prompt get the year the user was born and if the user is 18 or above allow the user to drive if not tell the user to wait a certain amount of years.
@@ -84,13 +110,32 @@ let yourAge = 25
 >> Enter birth year: 2005
 << You are 15. You will be allowed to drive after 3 years. */
 
+let birthYear = parseInt(prompt("What year were you born?"));
+var age01 = ((new Date()).getFullYear()) - birthYear;
+
+age01 >= 18
+    ? console.log("Okay, you're old enough to drive.")
+    : console.log(`You are ${age01}. You'll be allowed to drive after ${18 - age01} years.`)
+
 // Question 14
 /* Write a script that prompt the user to enter number of years. Calculate the number of seconds a person can live. Assume some one lives just hundred years,
 >> Enter number of years you live: 100
 << You lived 3153600000 seconds. */
+
+var age02 = parseInt(prompt("How old did you say you were again?"));
+let ageSec = age02 * 365 * 24 * 3600;
+
+console.log(`You've lived over ${ageSec} seconds.`)
 
 // Question 15
 /* Create a human readable time format using the Date time object:
 YYYY-MM-DD HH:mm
 DD-MM-YYYY HH:mm
 DD/MM/YYYY HH:mm */
+
+const theTime = new Date();
+let theTimeDate = theTime.getDate(), theTimeMonth = theTime.getMonth(), theTimeYear = theTime.getFullYear(), theTimeHour = theTime.getHours(), theTimeMin = theTime.getMinutes();
+
+let format_1 = `${theTimeYear}-${theTimeMonth}-${theTimeDate} ${theTimeHour}:${theTimeMin}`, format_2 = `${theTimeDate}-${theTimeMonth}-${theTimeYear} ${theTimeHour}:${theTimeMin}`, format_3 = `${theTimeDate}/${theTimeMonth}/${theTimeYear} ${theTimeHour}:${theTimeMin}`;
+
+console.log(`${format_1}\n${format_2}\n${format_3}`);
